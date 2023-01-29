@@ -171,7 +171,7 @@ First things first: Setting up the Environment.
   ```sh
   // SPDX-License-Identifier: MIT
   // 1. Pragma
-  pragma solidity ^0.8."checklatestversion";
+  pragma solidity ^0.8.checklatestversion;
   // 2. Imports
   import "./importedfile.sol";
 
@@ -187,12 +187,12 @@ First things first: Setting up the Environment.
 
   contract NameOfTheContract {
             // Type Declarations
-            using "importedfile" for uint256;
+            using importedfile for uint256;
 
             // State variables
-            uint256 public constant "MAYUSC_CONSTANT" = 1;
-            address private immutable "i_iForImmutable";
-            address[] private "s_sForStorageVariable";
+            uint256 public constant MAYUSC_CONSTANT = 1;
+            address private immutable i_iForImmutable;
+            address[] private s_sForStorageVariable;
 
             // Events
 
