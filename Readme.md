@@ -229,7 +229,7 @@ First things first: Setting up the Environment.
     const NameOfTheContractFactory = await ehters.getContractFactory("NameOfTheContract")
     console.log("Deploying contract...")
     const nameOfTheContract = await NameOfTheContractFactory.deploy()
-    await nameOfTheContract = await.deployed()
+    await nameOfTheContract.deployed()
   }
 
   // Error handling
