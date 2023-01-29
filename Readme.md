@@ -173,13 +173,13 @@ First things first: Setting up the Environment.
   // 1. Pragma
   pragma solidity ^0.8.checklatestversion;
   // 2. Imports
-  import "./importedfile.sol";
+  import "./importedfile.sol";  //erase
 
   // 3. Interfaces, Libraries, Contracts
 
   error NameOfTheContract__TheProblem();
 
-  /**@title: "A superb Smart Contract"
+  /* @title: "A superb Smart Contract"
    * @author: "My Name here"
    * @notice: "Super brief explanation of the contract"
    * @dev: "Super brief technical explanation"
@@ -187,12 +187,12 @@ First things first: Setting up the Environment.
 
   contract NameOfTheContract {
             // Type Declarations
-            using importedfile for uint256;
+            using importedfile for uint256; //erase
 
             // State variables
-            uint256 public constant MAYUSC_CONSTANT = 1;
-            address private immutable i_iForImmutable;
-            address[] private s_sForStorageVariable;
+            uint256 public constant MAYUSC_CONSTANT = 1; //erase
+            address private immutable i_iForImmutable; //erase
+            address[] private s_sForStorageVariable; //erase
 
             // Events
 
@@ -210,11 +210,13 @@ First things first: Setting up the Environment.
 
   }
 
-    /** @param: Explain some param here.
+    /*  @param: Explain some param here.
      *  @notice: Write some short ending comentary here. Be nice.
      */
 
   ```
+
+<p align="center">For other great Smart Contract templates you can go <a href="https://www.alchemy.com/best/smart-contract-templates">HERE</a></p>
 
 - Add `stuff`
 
