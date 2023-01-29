@@ -104,10 +104,46 @@ Built with these frameworks/libraries, add-ons/plugins will be added later
 
 First things first: Setting up the Environment.
 
-- npm
+- Everything is done in VST with WSL: Ubuntu.
 
   ```sh
-  npm nothing here yet
+  npm vst+wsl guide here
+  ```
+
+- Make github repo and clone it from inside vst | wsl: ubuntu.
+
+  ```sh
+  gitclone your empty just made repo
+  ```
+
+- Make the Readme.md file
+
+  ```sh
+  Copy one and tune it to the flavour of your smart contract.
+  ```
+
+- Open the terminal in vst | Enter WSL: Ubuntu terminal and go to the project's directory.
+
+  ```sh
+  You can get a nice wsl terminal at -link coming soon- & Pimp it.
+  ```
+
+- O
+
+  ```sh
+  Y
+  ```
+
+- O
+
+  ```sh
+  Y
+  ```
+
+- O
+
+  ```sh
+  Y
   ```
 
 ### Prerequisites
