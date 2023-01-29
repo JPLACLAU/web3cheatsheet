@@ -128,22 +128,42 @@ First things first: Setting up the Environment.
   You can get a nice wsl terminal at -link coming soon- & Pimp it.
   ```
 
-- O
+- You must have Git, Node, and Yarn. Check it. (and NPM)
 
   ```sh
-  Y
+  git --version
+  node --version
+  yarn --version
   ```
 
-- O
+- Initialize the `package.json`.
 
   ```sh
-  Y
+  yarn init
   ```
 
-- O
+- Add Hardhat
 
   ```sh
-  Y
+  yarn add --dev hardhat
+  ```
+
+- Initialize Hardhat. When asked, answer: | Javascript | .gitignore: `yes` | dependencies: `yes`.
+
+  ```sh
+  yarn hardhat
+  ```
+
+- Add `stuff`
+
+  ```sh
+  yarn "stuff"
+  ```
+
+- Add `stuff`
+
+  ```sh
+  yarn "stuff"
   ```
 
 ### Prerequisites
