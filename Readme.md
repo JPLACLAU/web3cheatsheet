@@ -116,7 +116,7 @@ First things first: Setting up the Environment.
   gitclone your empty just made repo
   ```
 
-- Make the Readme.md file
+- Make the `Readme.md` file and add a `License.txt`
 
   ```sh
   Copy one and tune it to the flavour of your smart contract.
@@ -152,6 +152,92 @@ First things first: Setting up the Environment.
 
   ```sh
   yarn hardhat
+  ```
+
+- Check Hardhat is runing fine and check its commands
+
+  ```sh
+  yarn hardhat
+  ```
+
+- Compile built-in starter contract, just because.
+
+  ```sh
+  yarn hardhat compile
+  ```
+
+- In the `/contracts/` folder, create a file `MyAmazingContract.sol`. You can copypaste this template:
+
+  ```sh
+  // SPDX-License-Identifier: MIT
+  // 1. Pragma
+  pragma solidity ^0.8."checklatestversion";
+  // 2. Imports
+  import "./importedfile.sol";
+
+  // 3. Interfaces, Libraries, Contracts
+
+  error NameOfTheContract__TheProblem();
+
+  /**@title: "A superb Smart Contract"
+   * @author: "My Name here"
+   * @notice: "Super brief explanation of the contract"
+   * @dev: "Super brief technical explanation"
+   */
+
+  contract NameOfTheContract {
+            // Type Declarations
+            using "importedfile" for uint256;
+
+            // State variables
+            uint256 public constant "MAYUSC_CONSTANT" = 1;
+            address private immutable "i_iForImmutable";
+            address[] private "s_sForStorageVariable";
+
+            // Events
+
+            // Modifiers
+
+            // Functions Order:
+            //// constructor
+            //// receive
+            //// fallback
+            //// external
+            //// public
+            //// internal
+            //// private
+            //// view / pure
+
+  }
+
+    /** @param: Explain some param here.
+     *  @notice: Write some short ending comentary here. Be nice.
+     */
+
+  ```
+
+- Add `stuff`
+
+  ```sh
+  yarn "stuff"
+  ```
+
+- Add `stuff`
+
+  ```sh
+  yarn "stuff"
+  ```
+
+- Add `stuff`
+
+  ```sh
+  yarn "stuff"
+  ```
+
+- Add `stuff`
+
+  ```sh
+  yarn "stuff"
   ```
 
 - Add `stuff`
