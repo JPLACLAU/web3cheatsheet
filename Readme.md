@@ -222,16 +222,23 @@ First things first: Setting up the Environment.
 
   ```
   //imports
-  const hre = require("hardhat");
+  const { ethers } = require("hardhat");
 
   //async main
-  async function main() {}
+  async function main() {
+    const NameOfTheContractFactory = await ehters.getContractFactory("NameOfTheContract")
+    console.log("Deploying contract...")
+    const nameOfTheContract = await NameOfTheContractFactory.deploy()
+    await nameOfTheContract = await.deployed()
+  }
 
   // Error handling
-  main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-  });
+  main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error)
+        process.exit(1)
+    })
 
   ```
 
@@ -252,10 +259,19 @@ First things first: Setting up the Environment.
   }
   ```
 
-- Add `stuff`
+- Create " `.prettierignore` " file in " `./` "
 
   ```sh
-  yarn "stuff"
+  node_modules
+  package.json
+  img
+  artifacts
+  cache
+  coverage
+  .env
+  .*
+  README.md
+  coverage.json
   ```
 
 - Add `stuff`
