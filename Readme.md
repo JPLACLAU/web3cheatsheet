@@ -218,22 +218,38 @@ First things first: Setting up the Environment.
 
 <p align="center">For other great Smart Contract templates you can go <a href="https://www.alchemy.com/best/smart-contract-templates">HERE</a></p>
 
-- Add `stuff`
+- In the `/scripts/` folder, modify `deploy.js`
 
-  ```sh
-  yarn "stuff"
+  ```
+  //imports
+  const hre = require("hardhat");
+
+  //async main
+  async function main() {}
+
+  // Error handling
+  main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+  });
+
   ```
 
-- Add `stuff`
+- Add Prettier
 
   ```sh
-  yarn "stuff"
+  yarn add --dev prettier prettier-plugin-solidity
   ```
 
-- Add `stuff`
+- Create " `.prettierrc` " file in " `./` "
 
   ```sh
-  yarn "stuff"
+  {
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": false
+  }
   ```
 
 - Add `stuff`
