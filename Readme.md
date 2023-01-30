@@ -106,31 +106,31 @@ First things first: Setting up the Environment.
 
 - Everything is done in VST with WSL: Ubuntu.
 
-  ```sh
-  npm vst+wsl guide here
+  ```
+  npm+vst+wsl Have to be instalated.
   ```
 
 - Make github repo and clone it from inside vst | wsl: ubuntu.
 
-  ```sh
-  gitclone your empty just made repo
+  ```
+  gitclone your empty-just-made github's repo
   ```
 
 - Make the `Readme.md` file and add a `License.txt`
 
-  ```sh
+  ```
   Copy one and tune it to the flavour of your smart contract.
   ```
 
 - Open the terminal in vst | Enter WSL: Ubuntu terminal and go to the project's directory.
 
-  ```sh
+  ```
   You can get a nice wsl terminal at -link coming soon- & Pimp it.
   ```
 
-- You must have Git, Node, and Yarn. Check it. (and NPM)
+- You must have Git, Node, and Yarn. Check it.
 
-  ```sh
+  ```
   git --version
   node --version
   yarn --version
@@ -138,152 +138,532 @@ First things first: Setting up the Environment.
 
 - Initialize the `package.json`.
 
-  ```sh
+  ```
   yarn init
   ```
 
-- Add Hardhat
+- Add `Hardhat`
 
-  ```sh
+  ```
   yarn add --dev hardhat
   ```
 
 - Initialize Hardhat. When asked, answer: | Javascript | .gitignore: `yes` | dependencies: `yes`.
 
-  ```sh
+  ```
   yarn hardhat
   ```
 
 - Check Hardhat is runing fine and check its commands
 
-  ```sh
+  ```
   yarn hardhat
   ```
 
 - Compile built-in starter contract, just because.
 
-  ```sh
+  ```
   yarn hardhat compile
   ```
 
 - In the `/contracts/` folder, create a file `MyAmazingContract.sol`. You can copypaste this template:
 
-  ```sh
-  // SPDX-License-Identifier: MIT
-  // 1. Pragma
-  pragma solidity ^0.8.checklatestversion;
-  // 2. Imports
-  import "./importedfile.sol";  //erase
+<details>
+  <summary><i>MyAmazingContract.sol</i></summary>
 
-  // 3. Interfaces, Libraries, Contracts
+```
+// SPDX-License-Identifier: MIT
+// 1. Pragma
+pragma solidity ^0.8.checklatestversion;
+// 2. Imports
+import "./importedfile.sol";  //erase
 
-  error NameOfTheContract__TheProblem();
+// 3. Interfaces, Libraries, Contracts
 
-  /* @title: "A superb Smart Contract"
-   * @author: "My Name here"
-   * @notice: "Super brief explanation of the contract"
-   * @dev: "Super brief technical explanation"
+error NameOfTheContract__TheProblem();
+
+/* @title: "A superb Smart Contract"
+ * @author: "My Name here"
+ * @notice: "Super brief explanation of the contract"
+ * @dev: "Super brief technical explanation"
+ */
+
+contract NameOfTheContract {
+          // Type Declarations
+          using importedfile for uint256; //erase
+
+          // State variables
+          uint256 public constant MAYUSC_CONSTANT = 1; //erase
+          address private immutable i_iForImmutable; //erase
+          address[] private s_sForStorageVariable; //erase
+
+          // Events
+
+          // Modifiers
+
+          // Functions Order:
+          //// constructor
+          //// receive
+          //// fallback
+          //// external
+          //// public
+          //// internal
+          //// private
+          //// view / pure
+
+}
+
+  /*  @param: Explain some param here.
+   *  @notice: Write some short ending comentary here. Be nice.
    */
 
-  contract NameOfTheContract {
-            // Type Declarations
-            using importedfile for uint256; //erase
-
-            // State variables
-            uint256 public constant MAYUSC_CONSTANT = 1; //erase
-            address private immutable i_iForImmutable; //erase
-            address[] private s_sForStorageVariable; //erase
-
-            // Events
-
-            // Modifiers
-
-            // Functions Order:
-            //// constructor
-            //// receive
-            //// fallback
-            //// external
-            //// public
-            //// internal
-            //// private
-            //// view / pure
-
-  }
-
-    /*  @param: Explain some param here.
-     *  @notice: Write some short ending comentary here. Be nice.
-     */
-
-  ```
+```
 
 <p align="center">For other great Smart Contract templates you can go <a href="https://www.alchemy.com/best/smart-contract-templates">HERE</a></p>
 
+</details>
+
+###### _._
+
 - In the `/scripts/` folder, modify `deploy.js`
 
+<details>
+  <summary><i>deploy.js</i></summary>
+
+```
+//imports
+const { ethers } = require("hardhat");
+
+//async main
+async function main() {
+  const NameOfTheContractFactory = await ethers.getContractFactory("NameOfTheContract")
+  console.log("Deploying contract...")
+  const nameOfTheContract = await NameOfTheContractFactory.deploy()
+  await nameOfTheContract.deployed()
+  console.log(`Deployed contract to: ${nameOfTheContract.address}`)
+
+}
+
+// Error handling
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+      console.error(error)
+      process.exit(1)
+  })
+
+```
+
+</details>
+
+###### _._
+
+- Add `Prettier`
+
   ```
-  //imports
-  const { ethers } = require("hardhat");
-
-  //async main
-  async function main() {
-    const NameOfTheContractFactory = await ehters.getContractFactory("NameOfTheContract")
-    console.log("Deploying contract...")
-    const nameOfTheContract = await NameOfTheContractFactory.deploy()
-    await nameOfTheContract.deployed()
-  }
-
-  // Error handling
-  main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error)
-        process.exit(1)
-    })
-
-  ```
-
-- Add Prettier
-
-  ```sh
   yarn add --dev prettier prettier-plugin-solidity
+
   ```
 
 - Create " `.prettierrc` " file in " `./` "
 
-  ```sh
-  {
-    "tabWidth": 4,
-    "useTabs": false,
-    "semi": false,
-    "singleQuote": false
-  }
-  ```
+<details>
+  <summary><i>.prettierrc</i></summary>
+
+```
+{
+  "tabWidth": 4,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": false
+}
+```
+
+</details>
+
+###### _._
 
 - Create " `.prettierignore` " file in " `./` "
 
-  ```sh
-  node_modules
-  package.json
-  img
-  artifacts
-  cache
-  coverage
-  .env
-  .*
-  README.md
-  coverage.json
+<details>
+    <summary><i>.prettierignore</i></summary>
+      
+```
+    node_modules
+    package.json
+    img
+    artifacts
+    cache
+    coverage
+    .env
+    .*
+    README.md
+    coverage.json
+```
+</details>
+
+###### _._
+
+- Change namings and run the script
+
+  ```
+  yarn hardhat run scripts/deploy.js
   ```
 
-- Add `stuff`
+  - [Optional] specific network:
 
-  ```sh
-  yarn "stuff"
+    ```
+    yarn hardhat run scripts/deploy.js --network hardhat
+    ```
+
+- Modify " `hardhat.config.js` " file in " `./` "
+
+<details>
+<summary><i>hardhat.config.js</i></summary>
+
+```
+require("@nomiclabs/hardhat-waffle")
+require("hardhat-gas-reporter")
+require("@nomiclabs/hardhat-etherscan")
+require("dotenv").config()
+require("solidity-coverage")
+require("hardhat-deploy")
+
+// You need to export an object to set up your config
+// Go to https://hardhat.org/config/ to learn more
+// @type import('hardhat/config').HardhatUserConfig
+
+  const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
+  const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL ||
+          "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
+  const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
+  const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+
+  module.exports = {
+      defaultNetwork: "hardhat",
+      networks: {
+        hardhat: {
+          chainId: 31337,
+        // gasPrice: 130000000000,
+      },
+        goerli: {
+          url: GOERLI_RPC_URL,
+          accounts: [PRIVATE_KEY],
+          chainId: 5,
+          blockConfirmations: 6,
+      },
+  },
+      solidity: {
+        compilers: [
+          {
+              version: "^0.8.17",
+          },
+          {
+              version: "0.6.6",
+          },
+      ],
+  },
+      etherscan: {
+        apiKey: ETHERSCAN_API_KEY,
+        // customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable
+  },
+      gasReporter: {
+        enabled: true,
+        currency: "USD",
+        outputFile: "gas-report.txt",
+        noColors: true,
+      // coinmarketcap: COINMARKETCAP_API_KEY,
+  },
+      namedAccounts: {
+        deployer: {
+          default: 0, // here this will by default take the first account as deployer
+          1: 0, // similarly on mainnet it will take the first account as deployer. Note though that depending on how hardhat network are configured, the account 0 on one network can be different than on another
+      },
+  },
+      mocha: {
+        timeout: 500000,
+  },
+  }
+
+```
+
+</details>
+
+###### _._
+
+- Add " `.env` " file in " `./` ". Make sure it is on `.gitignore` before saving any changes.
+
+<details>
+<summary><i>.env</i></summary>
+
+```
+PRIVATE_KEY=234523425asdfasdfa
+GOERLI_RPC_URL=http://0.0.0.0:8545
+COINMARKETCAP_API_KEY=asdfasdfasdfasdfasdfasdfasdf
+ETHERSCAN_API_KEY=asdfasdfasdfs
+```
+
+- [Important] : If you don't have those keys go check Lessons 3-6 of <a href="https://github.com/PatrickAlphaC">Patrick Collin</a>'s <a href="https://www.freecodecamp.org/">freeCodeCamp</a> 32h Solidity course <a href="https://youtu.be/gyMwXuJrbJQ">HERE</a>
+
+</details>
+
+###### _._
+
+- Run hardhat node environment (You can pick a pKey from here).
+
+  ```
+  yarn hardhat node
   ```
 
-- Add `stuff`
+- Run hardhat local network
 
-  ```sh
-  yarn "stuff"
+  ```
+  yarn hardhat console --network localhost
+  ```
+
+- Clean hardhat cache
+
+  ```
+  yarn hardhat clean
+  ```
+
+- Add `dotenv`
+
+  ```
+  yarn add --dev dotenv
+  ```
+
+- Add `hardhat-etherscan`
+
+  ```
+  yarn add --save-dev @nomiclabs/hardhat-etherscan
+  ```
+
+- Add `hardhat-gas-reporter`
+
+  ```
+  yarn add hardhat-gas-reporter --dev
+  ```
+
+- Add `hardhat-deploy-ethers ethers`
+
+  ```
+  yarn add --dev @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+  ```
+
+- Add `Chainlink contracts`
+
+  ```
+  yarn add --dev @chainlink/contracts
+  ```
+
+- Add `hardhat-deploy`. Also delete `deploy.js` from `/scripts/` and make its replacement in `/deploy/` with `01-deploy-contractname`.
+
+  ```
+  yarn add hardhat-deploy --dev
+  rm scripts/deploy.js
+  mkdir deploy
+  touch deploy/01-deploy-myamazingcontract.js
+  touch helper-hardhat-config.js
+  touch deploy/00-deploy-mocks.js
+  ```
+
+<details>
+    <summary><i>01-deploy-myamazingcontract.js</i></summary>
+
+```
+const { network } = require("hardhat")
+const { networkConfig, developmentChains } = require("../helper-hardhat-config")
+const { verify } = require("../utils/verify")
+require("dotenv").config()
+
+module.exports = async ({ getNamedAccounts, deployments }) => {
+    const { deploy, log } = deployments
+    const { deployer } = await getNamedAccounts()
+    const chainId = network.config.chainId
+
+    let ethUsdPriceFeedAddress
+    if (chainId == 31337) {
+        const ethUsdAggregator = await deployments.get("MockV3Aggregator")
+        ethUsdPriceFeedAddress = ethUsdAggregator.address
+    } else {
+        ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"]
+    }
+    log("----------------------------------------------------")
+    log("Deploying MyAmazingContract and waiting for confirmations...")
+    const myAmazingContract = await deploy("MyAmazingContract", {
+        from: deployer,
+        args: [ethUsdPriceFeedAddress],
+        log: true,
+        // we need to wait if on a live network so we can verify properly
+        waitConfirmations: network.config.blockConfirmations || 1,
+    })
+    log(`MyAmazingContract deployed at ${myAmazingContract.address}`)
+
+    if (
+        !developmentChains.includes(network.name) &&
+        process.env.ETHERSCAN_API_KEY
+    ) {
+        await verify(myAmazingContract.address, [ethUsdPriceFeedAddress])
+    }
+}
+
+module.exports.tags = ["all", "myAmazingContract"]
+```
+
+</details>
+
+###### _._
+
+<details>
+  <summary><i>helper-hardhat-config.js</i></summary>
+
+```
+const networkConfig = {
+    31337: {
+        name: "localhost",
+    },
+    // Price Feed Address, values can be obtained at https://docs.chain.link/docs/reference-contracts
+    5: {
+        name: "goerli",
+        ethUsdPriceFeed: "0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e",
+    },
+}
+
+const developmentChains = ["hardhat", "localhost"]
+
+module.exports = {
+    networkConfig,
+    developmentChains,
+}
+```
+
+</details>
+
+###### _._
+
+<details>
+  <summary><i>00-deploy-mocks.js</i></summary>
+
+```
+const { network } = require("hardhat")
+
+const DECIMALS = "8"
+const INITIAL_PRICE = "200000000000" // 2000
+module.exports = async ({ getNamedAccounts, deployments }) => {
+    const { deploy, log } = deployments
+    const { deployer } = await getNamedAccounts()
+    const chainId = network.config.chainId
+    // If we are on a local development network, we need to deploy mocks!
+    if (chainId == 31337) {
+        log("Local network detected! Deploying mocks...")
+        await deploy("MockV3Aggregator", {
+            contract: "MockV3Aggregator",
+            from: deployer,
+            log: true,
+            args: [DECIMALS, INITIAL_PRICE],
+        })
+        log("Mocks Deployed!")
+        log("------------------------------------------------")
+        log(
+            "You are deploying to a local network, you'll need a local network running to interact"
+        )
+        log(
+            "Please run `npx hardhat console` to interact with the deployed smart contracts!"
+        )
+        log("------------------------------------------------")
+    }
+}
+module.exports.tags = ["all", "mocks"]
+```
+
+</details>
+
+###### _._
+
+- In the `/contracts/test/` folder, create a file `test-deploy.js`.
+
+```
+mkdir contracts/test
+touch contracts/test/MockV3Aggregator.sol
+
+```
+
+<details>
+  <summary><i>MockV3Aggregator.sol</i></summary>
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
+
+import "@chainlink/contracts/src/v0.6/tests/MockV3Aggregator.sol";
+```
+
+</details>
+
+###### _._
+
+---
+
+### Let's continue with adding more testing tools
+
+###### _._
+
+- Add `solhint`. Check Solidity writing errors.
+
+  ```
+  yarn add solhint
+  yarn solhint contracts/*.sol
+  ```
+
+- Add `solidity-coverage`. Great for starting to test.
+
+  ```
+  yarn add --dev solidity-coverage
+  yarn hardhat coverage
+  ```
+
+- In the `/test/` folder, create a file `test-deploy.js`.
+
+<details>
+  <summary><i>test-deploy.js</i></summary>
+
+```
+y
+```
+
+</details>
+
+###### _._
+
+- Run tests
+
+  ```
+  yarn hardhat test
+  ```
+
+  - [Optional] specific network:
+
+    ```
+    yarn hardhat test --grep keywordOfTheTest
+    ```
+
+- Desc: " `blaba` "
+
+  ```
+  code
+  ```
+
+- Desc: " `blaba` "
+
+  ```
+  code
+  ```
+
+- Desc: " `blaba` "
+
+  ```
+  code
   ```
 
 ### Prerequisites
@@ -292,7 +672,7 @@ There will be a list of things you need to use this amazing Smart Contract.
 
 - npm
 
-  ```sh
+  ```
   npm nothing here yet
   ```
 
@@ -303,12 +683,12 @@ _Example on how to install/use will come in the future..._
 1. Goto [https://github.com/JPLACLAU/web3cheatsheet](https://github.com/JPLACLAU/web3cheatsheet)
 2. Clone the repo
 
-   ```sh
+   ```
    git clone https://github.com/JPLACLAU/web3cheatsheet
    ```
 
 3. Coming soon...
-   ```sh
+   ```
    Coming soon...
    ```
 
