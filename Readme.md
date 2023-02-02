@@ -181,11 +181,9 @@ First things first: Setting up the Environment.
 // 1. Pragma
 pragma solidity ^0.8.checklatestversion;
 // 2. Imports
-import "./importedfile.sol";  //erase
 
 // 3. Interfaces, Libraries, Contracts
 
-error NameOfTheContract__TheProblem();
 
 /* @title: "A superb Smart Contract"
  * @author: "My Name here"
@@ -195,17 +193,9 @@ error NameOfTheContract__TheProblem();
 
 contract NameOfTheContract {
           // Type Declarations
-          using importedfile for uint256; //erase
-
           // State variables
-          uint256 public constant MAYUSC_CONSTANT = 1; //erase
-          address private immutable i_iForImmutable; //erase
-          address[] private s_sForStorageVariable; //erase
-
           // Events
-
           // Modifiers
-
           // Functions Order:
           //// constructor
           //// receive
