@@ -431,7 +431,7 @@ ETHERSCAN_API_KEY=asdfasdfasdfs
 - Add `hardhat-etherscan`
 
   ```
-  yarn add --save-dev @nomiclabs/hardhat-etherscan
+  yarn add (--save)--dev @nomiclabs/hardhat-etherscan
   ```
 
 - Add `hardhat-gas-reporter`
