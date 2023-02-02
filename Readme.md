@@ -43,7 +43,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#environment">Environment</a></li>
+        <li><a href="#unit-testing">Unit-Testing</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -103,6 +104,10 @@ Built with these frameworks/libraries, add-ons/plugins will be added later
 ## Getting Started
 
 First things first: Setting up the Environment.
+
+### Environment
+
+###### _._
 
 - Everything is done in VST with WSL: Ubuntu.
 
@@ -457,6 +462,12 @@ ETHERSCAN_API_KEY=asdfasdfasdfs
   yarn add --dev @chainlink/contracts
   ```
 
+- Add `OpenZeppeling contracts`
+
+  ```
+  yarn add --dev @openzeppelin/contracts
+  ```
+
 - Add `hardhat-deploy`. Also delete `deploy.js` from `/scripts/` and make its replacement in `/deploy/` with `01-deploy-contractname`.
 
   ```
@@ -581,7 +592,7 @@ module.exports.tags = ["all", "mocks"]
 
 ###### _._
 
-- In the `/contracts/test/` folder, create a file `test-deploy.js`.
+- In the `/contracts/test/` folder, create a file `MockV3Aggregator.sol`.
 
 ```
 mkdir contracts/test
@@ -603,6 +614,42 @@ import "@chainlink/contracts/src/v0.6/tests/MockV3Aggregator.sol";
 
 ###### _._
 
+- Make a `/utils/` folder, create a file `verify.js`.
+
+```
+mkdir utils
+touch utils/verify.js
+```
+
+<details>
+  <summary><i>verify.js</i></summary>
+
+```
+const { run } = require("hardhat")
+
+const verify = async (contractAddress, args) => {
+  console.log("Verifying contract...")
+  try {
+    await run("verify:verify", {
+      address: contractAddress,
+      constructorArguments: args,
+    })
+  } catch (e) {
+    if (e.message.toLowerCase().includes("already verified")) {
+      console.log("Already verified!")
+    } else {
+      console.log(e)
+    }
+  }
+}
+
+module.exports = { verify }
+```
+
+</details>
+
+###### _._
+
 ---
 
 ### Let's continue with adding more testing tools
@@ -613,68 +660,75 @@ import "@chainlink/contracts/src/v0.6/tests/MockV3Aggregator.sol";
 
   ```
   yarn add solhint
-  yarn solhint contracts/*.sol
+  touch .solhint.json
+  touch .solhintignore
   ```
-
-- Add `solidity-coverage`. Great for starting to test.
-
-  ```
-  yarn add --dev solidity-coverage
-  yarn hardhat coverage
-  ```
-
-- In the `/test/` folder, create a file `test-deploy.js`.
 
 <details>
-  <summary><i>test-deploy.js</i></summary>
+    <summary><i>.solhint.json</i></summary>
 
 ```
-y
+{
+    "extends": "solhint:recommended",
+    "rules": {
+      "compiler-version": ["error", "^0.8.17"],
+      "func-visibility": ["warn", { "ignoreConstructors": true }]
+    }
+  }
 ```
 
 </details>
 
 ###### _._
 
-- Run tests
+<details>
+  <summary><i>.solhintignore</i></summary>
+
+```
+node_modules
+contracts/test
+```
+
+</details>
+
+###### _._
+
+- Add `solidity-coverage`. Great for starting to test.
 
   ```
+  yarn add --dev solidity-coverage
+  ```
+
+###### _._
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Unit-Testing
+
+###### _._
+
+- Make two extra testing folders, add the files, run some tests
+
+  ```
+  mkdir test/staging
+  mkdir test/unit
+  touch test/unit/Mycontractname.test.js
+  yarn solhint contracts/*.sol
+  yarn hardhat coverage
   yarn hardhat test
   ```
 
-  - [Optional] specific network:
+  - [Optional] specific test:
 
-    ```
-    yarn hardhat test --grep keywordOfTheTest
-    ```
+        ```
+        yarn hardhat test --grep keywordOfTheTest
+        ```
 
-- Desc: " `blaba` "
+    Add propper content to the `Mycontractname.test.js` tests.
 
-  ```
-  code
-  ```
+###### _._
 
-- Desc: " `blaba` "
-
-  ```
-  code
-  ```
-
-- Desc: " `blaba` "
-
-  ```
-  code
-  ```
-
-### Prerequisites
-
-There will be a list of things you need to use this amazing Smart Contract.
-
-- npm
-
-  ```
-  npm nothing here yet
-  ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Installation
 
@@ -719,11 +773,13 @@ See the [open issues](https://github.com/JPLACLAU/web3cheatsheet/issues) for a f
 
 ## ChangeLog
 
-Current version: `0.1`
+Current version: `0.2`
 
 | Version | Changes                                                       |
 | ------- | ------------------------------------------------------------- |
-| `0.2`   | Real usefull cheatsheet guide...at least some sections of it. |
+| `0.4`   | Real usefull cheatsheet guide...at least some sections of it. |
+| `0.3`   | Unit testing                                                  |
+| `0.2`   | Environment requirements done.                                |
 | `0.1`   | Start the proyect /write the Readme.md                        |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
